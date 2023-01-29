@@ -1,5 +1,5 @@
 import {IData} from '@src/components/types/type';
-import {FC} from 'react';
+import {FC, memo} from 'react';
 import {NavLink} from 'react-router-dom';
 
 const Item: FC<IData> = ({name, id}) => {
@@ -10,4 +10,4 @@ const Item: FC<IData> = ({name, id}) => {
   );
 };
 
-export default Item;
+export default memo(Item);

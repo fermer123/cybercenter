@@ -1,15 +1,17 @@
-import useCustomDispatch from '@src/components/store/hooks/useCustomDispatch';
-import {FC, useEffect} from 'react';
+import {fetchItem} from '@src/components/store/action/Items';
+import {IData} from '@src/components/types/type';
+import {FC, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 
 const ItemId: FC = () => {
+  const [data, setData] = useState({} as IData);
   const {id} = useParams();
-  const {fetchItem} = useCustomDispatch();
+
   useEffect(() => {
-    fetchItem(id);
+    fetchItem(id, setData);
   }, []);
 
-  return <div>{id}</div>;
+  return <div>{data.id}</div>;
 };
 
 export default ItemId;

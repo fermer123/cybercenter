@@ -6,6 +6,7 @@ import Item from '../Item/Item';
 const Items: FC = () => {
   const {items} = useTypeSelector((state) => state.item);
   const {fetchItems} = useCustomDispatch();
+
   useEffect(() => {
     fetchItems();
   }, []);
