@@ -24,6 +24,8 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
+    "default-param-last": "off",
+    "@typescript-eslint/default-param-last": "off",
     "react/jsx-uses-react": "off",
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
