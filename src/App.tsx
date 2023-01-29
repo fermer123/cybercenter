@@ -1,6 +1,6 @@
 import {FC} from 'react';
 import {Route, Routes} from 'react-router-dom';
-import Item from './components/pages/Item/Item';
+import ItemId from './components/pages/ItemId/ItemId';
 import Items from './components/pages/Items/Items';
 
 const App: FC = () => {
@@ -8,7 +8,7 @@ const App: FC = () => {
     <div>
       <Routes>
         <Route path='/' element={<Items />} />
-        <Route path='/item/:id' element={<Item />} />
+        <Route path='/items/:id' element={<ItemId />} />
       </Routes>
     </div>
   );

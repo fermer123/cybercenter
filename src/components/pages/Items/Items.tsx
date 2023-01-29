@@ -1,16 +1,23 @@
-import fetchItems from '@src/components/store/action/fetchItems';
+import useCustomDispatch from '@src/components/store/hooks/useCustomDispatch';
 import useTypeSelector from '@src/components/store/hooks/useTypeSelector';
 import {FC, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
+import Item from '../Item/Item';
 
 const Items: FC = () => {
-  const {error, items, loading} = useTypeSelector((state) => state.item);
-  const dispatch = useDispatch();
+  const {items} = useTypeSelector((state) => state.item);
+  const {fetchItems} = useCustomDispatch();
   useEffect(() => {
-    dispatch(fetchItems());
+    fetchItems();
   }, []);
-  console.log(items);
-  return <div>items</div>;
+
+  return (
+    <div>
+      {items.map((e) => (
+        // eslint-disable-next-line react/jsx-props-no-spreading
+        <Item {...e} key={e.id} />
+      ))}
+    </div>
+  );
 };
 
 export default Items;
