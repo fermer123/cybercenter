@@ -26,6 +26,11 @@ const itemReducer = (
         ...state,
         items: [...state.items, action.payload],
       };
+    case EActionTypes.DELETE_ITEM:
+      return {
+        ...state,
+        items: state.items.filter((e) => e.id !== action.payload),
+      };
     default:
       return state;
   }

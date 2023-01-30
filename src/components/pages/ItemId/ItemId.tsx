@@ -11,7 +11,12 @@ const ItemId: FC = () => {
     fetchItem(id, setData);
   }, []);
 
-  return <div>{data.id}</div>;
+  return (
+    <ul>
+      <li>{data.id}</li>
+      <li>{data.name}</li>
+    </ul>
+  );
 };
 
 export default ItemId;
