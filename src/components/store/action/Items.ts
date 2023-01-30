@@ -21,7 +21,7 @@ export const fetchItems = () => async (dispatch: Dispatch<IItemAction>) => {
 export const fetchItem = async (
   id: string | number,
   setData: (arg: IData) => void,
-): Promise<void> => {
+) => {
   const resp = await axios(`items/${id}`);
   setData(await resp.data);
 };
@@ -43,6 +43,18 @@ export const deleteItem =
     try {
       await axios.delete(`items/${id}`);
       dispatch({type: EActionTypes.DELETE_ITEM, payload: id});
+    } catch (error) {
+      console.log(error);
+    }
+  };
+export const editItem =
+  (id: number, name: string) => async (dispatch: Dispatch<IItemAction>) => {
+    try {
+      await axios.patch(`items/${id}`, {id, name});
+      dispatch({
+        type: EActionTypes.EDIT_ITEM,
+        payload: {id, name},
+      });
     } catch (error) {
       console.log(error);
     }

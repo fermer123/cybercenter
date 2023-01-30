@@ -34,7 +34,9 @@ const itemReducer = (
     case EActionTypes.EDIT_ITEM:
       return {
         ...state,
-        items: state.items.map((e) => e.id === action.payload),
+        items: state.items.map((e) =>
+          e.id === action.payload.id ? {...e, name: action.payload.name} : e,
+        ),
       };
     default:
       return state;

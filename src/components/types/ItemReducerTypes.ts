@@ -37,5 +37,5 @@ interface IdeleteItem {
 }
 interface IEditItem {
   type: EActionTypes.EDIT_ITEM;
-  payload: string;
+  payload: IData;
 }
