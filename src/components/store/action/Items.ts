@@ -24,3 +24,14 @@ export const fetchItem = async (
   const resp = await axios(`items/${id}`);
   setData(await resp.data);
 };
+export const addNewItem =
+  (newItem: IData) => async (dispatch: Dispatch<IItemAction>) => {
+    try {
+      await axios.post(`items`, {
+        ...newItem,
+      });
+      dispatch({type: EActionTypes.ADD_NEW_ITEM, payload: newItem});
+    } catch (error) {
+      console.log(error);
+    }
+  };

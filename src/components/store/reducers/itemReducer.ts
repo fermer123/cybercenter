@@ -21,6 +21,11 @@ const itemReducer = (
       return {...state, loading: false, items: action.payload};
     case EActionTypes.FETCH_ITEMS_ERROR:
       return {...state, loading: false, error: true};
+    case EActionTypes.ADD_NEW_ITEM:
+      return {
+        ...state,
+        items: [...state.items, action.payload],
+      };
     default:
       return state;
   }
