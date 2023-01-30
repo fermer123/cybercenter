@@ -6,6 +6,7 @@ export enum EActionTypes {
   FETCH_ITEMS_ERROR = 'FETCH_ITEMS_ERROR',
   ADD_NEW_ITEM = 'ADD_NEW_ITEM',
   DELETE_ITEM = 'DELETE_ITEM',
+  EDIT_ITEM = 'EDIT_ITEM',
 }
 
 export type IItemAction =
@@ -13,7 +14,8 @@ export type IItemAction =
   | IfetchActionSuccess
   | IfetchActionError
   | IaddNewItem
-  | IdeleteItem;
+  | IdeleteItem
+  | IEditItem;
 
 interface IfetchAction {
   type: EActionTypes.FETCH_ITEMS;
@@ -32,4 +34,8 @@ interface IaddNewItem {
 interface IdeleteItem {
   type: EActionTypes.DELETE_ITEM;
   payload: number;
+}
+interface IEditItem {
+  type: EActionTypes.EDIT_ITEM;
+  payload: string;
 }

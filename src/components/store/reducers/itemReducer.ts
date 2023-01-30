@@ -31,6 +31,11 @@ const itemReducer = (
         ...state,
         items: state.items.filter((e) => e.id !== action.payload),
       };
+    case EActionTypes.EDIT_ITEM:
+      return {
+        ...state,
+        items: state.items.map((e) => e.id === action.payload),
+      };
     default:
       return state;
   }
