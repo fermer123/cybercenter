@@ -16,7 +16,14 @@ const AddNewItem: FC<Iprops> = (props) => {
       addNewItem({name: props.value, id: parseFloat(uuidv4())});
     }
   };
-  return <input onKeyDown={postNewItem} tabIndex={0} {...props} />;
+  return (
+    <input
+      placeholder='press enter to add value'
+      onKeyDown={postNewItem}
+      tabIndex={0}
+      {...props}
+    />
+  );
 };
 
 export default AddNewItem;

@@ -30,12 +30,14 @@ const ItemId: FC = () => {
   }, [edit]);
 
   return (
-    <ul>
-      <li>{data.id}</li>
+    <div>
+      <p>{data.id}</p>
       {edit ? (
         <input placeholder={data.name} {...editInput} />
       ) : (
-        <li>{data.name}</li>
+        <div>
+          <p>{data.name}</p>
+        </div>
       )}
 
       {edit ? (
@@ -49,7 +51,7 @@ const ItemId: FC = () => {
           edit
         </button>
       )}
-    </ul>
+    </div>
   );
 };
 
