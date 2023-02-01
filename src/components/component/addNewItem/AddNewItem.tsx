@@ -13,7 +13,7 @@ const AddNewItem: FC<Iprops> = (props) => {
 
   const postNewItem = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && props.value.length) {
-      addNewItem({name: props.value, id: parseFloat(uuidv4())});
+      addNewItem({name: props.value, id: Number(uuidv4())});
     }
   };
   return (
