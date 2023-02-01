@@ -29,7 +29,7 @@ const Items: FC = () => {
     },
     [searchItem],
   );
-
+  console.log(searchItem);
   return (
     <div>
       <input
@@ -39,9 +39,13 @@ const Items: FC = () => {
       />
       <AddNewItem {...addNewItem} />
       <div>
-        {items.map((e) => (
-          <Item {...e} key={e.id} />
-        ))}
+        {items.map((e) =>
+          searchItemArr.includes(e) ? (
+            <Item {...e} key={e.id} color='red' />
+          ) : (
+            <Item {...e} key={e.id} color='none' />
+          ),
+        )}
       </div>
     </div>
   );
