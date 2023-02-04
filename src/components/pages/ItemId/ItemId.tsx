@@ -1,5 +1,5 @@
-import useInput from '@src/components/component/input';
 import {fetchItem} from '@src/components/store/action/Items';
+import useInput from '@src/components/store/hooks/input';
 import useCustomDispatch from '@src/components/store/hooks/useCustomDispatch';
 import {IData} from '@src/components/types/type';
 import {FC, useEffect, useState} from 'react';
