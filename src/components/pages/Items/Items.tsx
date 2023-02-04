@@ -8,25 +8,12 @@ import Item from '../Item/Item';
 const Items: FC = () => {
   const [searchItem, setSearchItem] = useState<string>('');
   const [searchItemArr, setSearchItemArr] = useState<IData[]>([]);
-  const {items} = useTypeSelector((state) => state.item);
+  const {items, loading, error} = useTypeSelector((state) => state.item);
   const {fetchItems} = useCustomDispatch();
-
+  const [searchIndex, setSearchIndex] = useState<number>(0);
   useEffect(() => {
     fetchItems();
   }, []);
-
-  // const itemSearchHandler = (e: ChangeEvent<HTMLInputElement>) => {
-  //   setSearchItem(e.target.value);
-  //   if (searchItem.length >= 2) {
-  //     setSearchItemArr(
-  //       items.filter((e) =>
-  //         e.name.toLowerCase().includes(searchItem.toLowerCase()),
-  //       ),
-  //     );
-  //   } else {
-  //     setSearchItemArr([]);
-  //   }
-  // };
 
   useEffect(() => {
     const itemSearchHandler = (search: string) => {
@@ -43,21 +30,9 @@ const Items: FC = () => {
     itemSearchHandler(searchItem);
   }, [searchItem]);
 
-  // const itemSearchHandler = useCallback(
-  //   (str: ChangeEvent<HTMLInputElement>) => {
-  //     setSearchItem(str.target.value);
-  //     if (searchItem.length >= 2) {
-  //       setSearchItemArr(
-  //         items.filter((e) =>
-  //           e.name.toLowerCase().includes(searchItem.toLowerCase()),
-  //         ),
-  //       );
-  //     } else {
-  //       setSearchItemArr([]);
-  //     }
-  //   },
-  //   [searchItem],
-  // );
+  if (loading) {
+    return <span>loading</span>;
+  }
 
   return (
     <div>
@@ -66,10 +41,26 @@ const Items: FC = () => {
         value={searchItem}
         onChange={(e) => setSearchItem(e.target.value)}
       />
+      {searchItem ? (
+        <>
+          <button
+            style={{padding: '0 15px', border: '1px solid'}}
+            onClick={() => setSearchIndex(searchIndex - 1)}
+            type='button'>
+            prev
+          </button>
+          <button
+            style={{padding: '0 15px', border: '1px solid'}}
+            onClick={() => setSearchIndex(searchIndex + 1)}
+            type='button'>
+            prev
+          </button>
+        </>
+      ) : null}
       <AddNewItem />
       <div>
         {items.map((e) =>
-          searchItemArr.includes(e) ? (
+          searchItemArr[searchIndex]?.name === e.name ? (
             <div key={e.id} style={{backgroundColor: 'red'}}>
               <Item {...e} />
             </div>
