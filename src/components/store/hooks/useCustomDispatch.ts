@@ -1,9 +1,9 @@
 import {useDispatch} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as Items from '../action/Items';
+import actionCreators from '../reducers/index';
 
 const useCustomDispatch = () => {
   const dispatch = useDispatch();
-  return bindActionCreators(Items, dispatch);
+  return bindActionCreators(actionCreators, dispatch);
 };
 export default useCustomDispatch;
